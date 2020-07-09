@@ -1,4 +1,4 @@
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: DaemonSet
 metadata:
   name: fluent-bit
@@ -27,7 +27,7 @@ spec:
           - containerPort: 2020
         env:
         - name: FLUENT_ELASTICSEARCH_HOST
-          value: "elasticsearch"
+          value: "qast-elk02.test3.nimblestorage.com"
         - name: FLUENT_ELASTICSEARCH_PORT
           value: "9200"
         volumeMounts:
