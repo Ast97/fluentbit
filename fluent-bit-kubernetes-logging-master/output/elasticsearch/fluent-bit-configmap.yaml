@@ -52,7 +52,9 @@ data:
         Match           *
         Host            ${FLUENT_ELASTICSEARCH_HOST}
         Port            ${FLUENT_ELASTICSEARCH_PORT}
+        Include_Tag_Key On
         Logstash_Format On
+        Logstash_Prefix barrage-lvs-test
         Replace_Dots    On
         Retry_Limit     False
 
