@@ -10,7 +10,7 @@ metadata:
 spec:
   selector:
     matchLabels:
-      k8s-app: filebeat
+      k8s-app: fluent-bit-logging
   template:
     metadata:
       labels:
