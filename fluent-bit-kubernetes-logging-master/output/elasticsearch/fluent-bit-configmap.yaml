@@ -10,13 +10,14 @@ data:
   # ======================================================
   fluent-bit.conf: |
     [SERVICE]
-        Flush         1
+        Flush         5
         Log_Level     info
         Daemon        off
         Parsers_File  parsers.conf
         HTTP_Server   On
         HTTP_Listen   0.0.0.0
         HTTP_Port     2020
+        Mem_Buf_Limit 100MB
 
     @INCLUDE input-kubernetes.conf
     @INCLUDE filter-kubernetes.conf
