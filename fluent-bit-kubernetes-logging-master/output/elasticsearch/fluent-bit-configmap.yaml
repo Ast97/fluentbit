@@ -54,7 +54,7 @@ data:
         Port            ${FLUENT_ELASTICSEARCH_PORT}
         Include_Tag_Key On
         Logstash_Format On
-        Logstash_Prefix barrage-lvs-test
+        Logstash_Prefix test-barrage-lvs
         Replace_Dots    On
         Retry_Limit     False
 
