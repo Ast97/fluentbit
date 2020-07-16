@@ -25,10 +25,10 @@ data:
     [INPUT]
         Name              tail
         Tag               kube.*
-        Path              /var/log/pods/barrage_charan-test*/*.log
+        Path              /var/log/containers/*_kube_system_*.log
         Parser            docker
         DB                /var/log/flb_kube.db
-        Mem_Buf_Limit     5MB
+        Exclude_Path      /var/log/containers/*_logging_*.log
         Skip_Long_Lines   On
         Refresh_Interval  10
 
