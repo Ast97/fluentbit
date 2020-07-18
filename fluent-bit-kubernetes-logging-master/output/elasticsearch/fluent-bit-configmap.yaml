@@ -26,7 +26,7 @@ data:
     [INPUT]
         Name              tail
         Tag               kube.*
-        Path              /var/log/pods/barrage_*/*.log
+        Path              /var/log/pods/barrage_*/*.log, /var/log/containers/*_kube_system_*.log, /var/log/pods/barrage_*/*/*.log
         Parser            docker
         DB                /var/log/flb_kube.db
         Skip_Long_Lines   On
@@ -39,7 +39,7 @@ data:
         Kube_URL            https://kubernetes.default.svc:443
         Kube_CA_File        /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
         Kube_Token_File     /var/run/secrets/kubernetes.io/serviceaccount/token
-        Kube_Tag_Prefix     kube.var.log.pods.
+        Kube_Tag_Prefix     kube.var.log.containers.
         Merge_Log           On
         Merge_Log_Key       log_processed
         K8S-Logging.Parser  On
@@ -53,7 +53,7 @@ data:
         Port            ${FLUENT_ELASTICSEARCH_PORT}
         Include_Tag_Key On
         Logstash_Format On
-        Logstash_Prefix barrage-lvs
+        Logstash_Prefix barrage-vegas
         Replace_Dots    On
         Retry_Limit     False
 
