@@ -26,7 +26,8 @@ data:
     [INPUT]
         Name              tail
         Tag               kube.*
-        Path              /var/log/pods/barrage_*/*.log, /var/log/containers/*_kube_system_*.log, /var/log/pods/barrage_*/*/*.log
+        Path              /var/log/containers/*_kube_system_*.log
+        Exclude_Path      /var/log/containers/*_logging_*.log
         Parser            docker
         DB                /var/log/flb_kube.db
         Skip_Long_Lines   On
