@@ -30,7 +30,7 @@ spec:
           - containerPort: 2020
         env:
         - name: FLUENT_ELASTICSEARCH_HOST
-          value: "qast-elk02.test3.nimblestorage.com"
+          value: "sqa-elk-preemt01.test3.nimblestorage.com"
         - name: FLUENT_ELASTICSEARCH_PORT
           value: "9200"
         volumeMounts:
