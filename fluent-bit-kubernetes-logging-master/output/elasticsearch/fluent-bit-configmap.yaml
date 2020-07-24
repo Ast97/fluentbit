@@ -44,7 +44,6 @@ data:
         Merge_Log_Key       log_processed
         K8S-Logging.Parser  On
         K8S-Logging.Exclude Off
-        Whitelist_key       kubernetes.host
         Whitelist_key       kubernetes.namespace_name
         Whitelist_key       kubernetes.pod_name
         Whitelist_key       log
