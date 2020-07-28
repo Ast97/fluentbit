@@ -45,15 +45,14 @@ data:
         Merge_Log_Key       log_processed
         K8S-Logging.Parser  On
         K8S-Logging.Exclude Off
-        Remove_key          log
-        Remove_key          kubernetes.namespace_name
         
   filter-record_modifier.conf: |
     [FILTER]
         Name                record_modifier
         Match               kube*
         Remove_key          log
-        Remove_key          kubernetes.namespace_name
+        Remove_key          stream
+        Remove_key          time
 
   output-elasticsearch.conf: |
     [OUTPUT]
