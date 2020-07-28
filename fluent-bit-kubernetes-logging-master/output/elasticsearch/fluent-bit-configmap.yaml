@@ -21,6 +21,7 @@ data:
     @INCLUDE input-kubernetes.conf
     @INCLUDE filter-kubernetes.conf
     @INCLUDE filter-record_modifier.conf
+    @INCLUDE filters.lua
     @INCLUDE output-elasticsearch.conf
 
   input-kubernetes.conf: |
@@ -53,21 +54,21 @@ data:
         Remove_key          flb-key
         Remove_key          stream
         Remove_key          time
-  
-#      [FILTER]
-#         name                  lua
-#         match                 *
-#         script                filters.lua
-#         call                  transform
         
-#   filters.lua: |
-#     function transform(tag, timestamp, record)
-#         if record["kubernetes"] then
-#             new_record = {}
-#             new_record["namespace"] = record["kubernetes"]["namespace_name"]
-#             new_record["pod"] = record["kubernetes"]["pod_name"]
-#         return 2, timestamp, new_record
-#     end
+    [FILTER]
+        Name                lua
+        Match               kube*
+        Script              filters.lua
+        Call                transform
+        
+  filters.lua: |
+    function transform(tag, timestamp, record)
+        if record["kubernetes"] then
+            new_record = {}
+            new_record["namespace"] = record["kubernetes"]["namespace_name"]
+            new_record["pod"] = record["kubernetes"]["pod_name"]
+        return 2, timestamp, new_record
+    end
 
   output-elasticsearch.conf: |
     [OUTPUT]
