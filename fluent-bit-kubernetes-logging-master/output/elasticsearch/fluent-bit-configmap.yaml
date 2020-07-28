@@ -50,7 +50,7 @@ data:
     [FILTER]
         Name                record_modifier
         Match               kube*
-        Remove_key          log
+        Remove_key          flb-key
         Remove_key          stream
         Remove_key          time
 
