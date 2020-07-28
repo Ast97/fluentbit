@@ -27,7 +27,7 @@ data:
     [INPUT]
         Name              tail
         Tag               kube.*
-        Path              /var/log/containers/*_kube-system_*.log
+        Path              /var/log/containers/*_ingress-nginx_*.log
         Parser            docker
         DB                /var/log/flb_kube.db
         Skip_Long_Lines   On
@@ -50,9 +50,7 @@ data:
     [FILTER]
         Name                record_modifier
         Match               kube*
-        Whitelist_key       kubernetes.namespace_name
-        Whitelist_key       kubernetes.pod_name
-        Whitelist_key       log
+        Remove_key          kubernetes.namespace_name
 
   output-elasticsearch.conf: |
     [OUTPUT]
