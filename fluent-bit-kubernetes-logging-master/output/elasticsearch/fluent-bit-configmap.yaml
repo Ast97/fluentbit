@@ -63,7 +63,8 @@ data:
         
   filters.lua: |
     function transform(tag, timestamp, record)
-        if record["kubernetes"] then
+        if record["kubernetes"]
+        then
             new_record = {}
             new_record["namespace"] = record["kubernetes"]["namespace_name"]
             new_record["pod"] = record["kubernetes"]["pod_name"]
