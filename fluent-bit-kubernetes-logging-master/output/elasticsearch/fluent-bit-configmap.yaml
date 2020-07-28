@@ -49,7 +49,7 @@ data:
   filter-record_modifier.conf: |
     [FILTER]
         Name                record_modifier
-        Match               *
+        Match               kube*
         Whitelist_key       kubernetes.namespace_name
         Whitelist_key       kubernetes.pod_name
         Whitelist_key       log
