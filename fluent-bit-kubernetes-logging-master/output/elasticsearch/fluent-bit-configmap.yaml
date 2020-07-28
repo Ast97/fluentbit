@@ -21,13 +21,14 @@ data:
     @INCLUDE input-kubernetes.conf
     @INCLUDE filter-kubernetes.conf
     @INCLUDE filter-record_modifier.conf
+    @INCLUDE filters.lua
     @INCLUDE output-elasticsearch.conf
 
   input-kubernetes.conf: |
     [INPUT]
         Name              tail
         Tag               kube.*
-        Path              /var/log/containers/*_kube-system_*.log
+        Path              /var/log/containers/*_cattle-system_*.log
         Parser            docker
         DB                /var/log/flb_kube.db
         Skip_Long_Lines   On
@@ -59,7 +60,7 @@ data:
 #         match                 *
 #         script                filters.lua
 #         call                  transform
-#         
+        
 #   filters.lua: |
 #     function transform(tag, timestamp, record)
 #         if record["kubernetes"] then
